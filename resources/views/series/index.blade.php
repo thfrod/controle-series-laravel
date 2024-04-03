@@ -2,7 +2,7 @@
     <a class="btn btn-dark mb-2" href="{{ route('series.create') }}">Criar nova série</a>
     @isset($mensagemSucesso)
         <div class="alert alert-success">
-            {{ $mensagemSucesso }}
+            {!! $mensagemSucesso !!}
         </div>
     @endisset
     <ul class="list-group">

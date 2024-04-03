@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Serie extends Model
+class Series extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function season()
+    public function seasons()
     {
         return $this->hasMany(Season::class, 'series_id');
+    }
+
+    protected static function booted()
+    {
+        self::addGlobalScope('ordered', fn(Builder $queryBuilder) => $queryBuilder->orderBy('name'));
     }
 }
